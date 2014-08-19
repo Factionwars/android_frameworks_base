@@ -393,6 +393,13 @@ public final class MifareClassic extends BasicTagTechnology {
 
         try {
             if (transceive(cmd, false) != null) {
+                //MifareSpy
+                StringBuffer sb = new StringBuffer();
+                for (byte b : key) {
+                     sb.append(String.format("%02X", b));
+                }
+                Log.e("MifareSpy", ":"+keyA+":"+sector+":"+sb.toString()+":");
+                //End MifareSpy
                 return true;
             }
         } catch (TagLostException e) {
